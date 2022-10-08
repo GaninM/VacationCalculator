@@ -2,9 +2,9 @@ package com.neo.task.vacationcalculator.model;
 
 public class Vacation {
 
-    private Integer vacationsDays;
-    private Double averageSalary;
-    private Double vacationPay;
+    private int vacationsDays;
+    private double averageSalary;
+    private double vacationPay = 0.0;
 
     public Integer getVacationsDays() {
         return vacationsDays;
