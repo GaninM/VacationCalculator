@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="eng">
+<head>
+    <title>Vacation Calculator</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<h1>Add vacation parameters</h1>
+
+<!--/*@thymesVar id="vacation" type="com.neo.task.vacationcalculator.model.Vacation"*/-->
+<form action="#" th:action="@{/calculate}" th:object="${vacation}" method="POST">
+    <label for="vacationDays"><p>Amount vacation days<br></p></label>
+    <input id="vacationDays" type="number" th:field="*{vacationsDays}">
+    <label for="averageSalary"><p>Average salary before tax<br></p></label>
+    <input id="averageSalary" type="number" th:field="*{averageSalary}">
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" />
+</form>
+
+</body>
+</html>
