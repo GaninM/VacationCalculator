@@ -19,7 +19,9 @@ public class VacationCalculatorService {
 
     public double calculateVacationPay(Vacation vacation) {
         double averageSalaryPerDays = vacation.getAverageSalary() / Constants.AVERAGE_CALENDAR_DAYS_IN_YEAR;
-        return averageSalaryPerDays * calculateVacationDays(vacation.getVacationStart(), vacation.getVacationEnd());
+        double scale = Math.pow(10, 2);
+        return Math.ceil((averageSalaryPerDays * calculateVacationDays(vacation.getVacationStart(),
+                vacation.getVacationEnd())) * scale) / scale;
     }
 
     public int calculateVacationDays(Date vacationsStart, Date vacationEnd) {
