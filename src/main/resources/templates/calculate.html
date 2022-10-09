@@ -1,21 +1,28 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" lang="eng">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="eng">
 <head>
     <title>Vacation Calculator</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
 
 <h1>Add vacation parameters</h1>
 
 <!--/*@thymesVar id="vacation" type="com.neo.task.vacationcalculator.model.Vacation"*/-->
-<form action="#" th:action="@{/calculate}" th:object="${vacation}" method="POST">
-    <label for="vacationDays"><p>Amount vacation days<br></p></label>
-    <input id="vacationDays" type="number" th:field="*{vacationsDays}">
+<form action="#" th:action="@{/calculate}" th:object="${vacation}" method="GET">
+    <label for="vacationStart">Vacation period
+        <input id="vacationStart" type="date" th:field="*{vacationStart}">
+        <input type="date" th:field="*{vacationEnd}">
+    </label>
     <label for="averageSalary"><p>Average salary before tax<br></p></label>
-    <input id="averageSalary" type="number" th:field="*{averageSalary}">
-    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" />
+    <input id="averageSalary" type="number" step="any" th:field="*{averageSalary}">
+    <p th:text="'Vacation days without holiday: ' + ${vacation.vacationsDays}"></p>
+    <p th:text="'Holidays in vacation: ' + ${vacation.holidaysInVacation}"></p>
+    <p th:text="'Vacation pay before tax for' + ${vacation.vacationsDays + vacation.holidaysInVacation} + ' days '
+     + ${vacation.vacationPay}"></p>
+    <p><input type="submit" value="Calculate"/>
 </form>
+
 
 </body>
 </html>
