@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 public class VacationCalculatorService {
 
     public void setVacationData(Vacation vacation) {
-        vacation.setHolidaysInVacation(checkVacationInHolidays(vacation.getVacationStart(), vacation.getVacationEnd()));
+        vacation.setHolidaysInVacation(checkVacationOnHolidays(vacation.getVacationStart(), vacation.getVacationEnd()));
         vacation.setVacationsDays(calculateVacationDays(vacation.getVacationStart(), vacation.getVacationEnd()));
         vacation.setVacationPay(calculateVacationPay(vacation));
     }
@@ -27,10 +27,10 @@ public class VacationCalculatorService {
     public int calculateVacationDays(Date vacationsStart, Date vacationEnd) {
         long timeBetween = vacationEnd.getTime() - vacationsStart.getTime();
         int vacationDays = (int) TimeUnit.DAYS.convert(timeBetween, TimeUnit.MILLISECONDS) + 1;
-        return vacationDays + checkVacationInHolidays(vacationsStart, vacationEnd);
+        return vacationDays - checkVacationOnHolidays(vacationsStart, vacationEnd);
     }
 
-    public int checkVacationInHolidays(Date vacationsStart, Date vacationEnd) {
+    public int checkVacationOnHolidays(Date vacationsStart, Date vacationEnd) {
         int holidaysInVacation = 0;
         for (Date holidays : Constants.HOLIDAYS_IN_2022) {
             if (!(holidays.before(vacationsStart) || holidays.after(vacationEnd))) {
