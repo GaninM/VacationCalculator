@@ -11,8 +11,8 @@ import java.util.StringJoiner;
 @Setter
 public class Vacation {
 
-    private Date vacationStart;
-    private Date vacationEnd;
+    private Date vacationStart = new Date(2022 - 1900, 0, 1);
+    private Date vacationEnd = new Date(2022 - 1900, 0, 1);
     private int vacationsDays;
     private int holidaysInVacation;
     private double averageSalary;
