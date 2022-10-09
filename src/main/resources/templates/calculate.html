@@ -1,9 +1,8 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="eng">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <title>Vacation Calculator</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link th:href="@{../css/style.css}" rel="stylesheet" />
 </head>
 <body>
 
@@ -19,7 +18,7 @@
     <input id="averageSalary" type="number" step="any" th:field="*{averageSalary}">
     <p th:text="'Vacation days without holiday: ' + ${vacation.vacationsDays}"></p>
     <p th:text="'Holidays in vacation: ' + ${vacation.holidaysInVacation}"></p>
-    <p th:text="'Vacation pay before tax for' + ${vacation.vacationsDays + vacation.holidaysInVacation} + ' days: '
+    <p th:text="'Vacation pay before tax for ' + ${vacation.vacationsDays + vacation.holidaysInVacation} + ' days: '
      + ${vacation.vacationPay}"></p>
     <p><input type="submit" value="Calculate"/>
 </form>
