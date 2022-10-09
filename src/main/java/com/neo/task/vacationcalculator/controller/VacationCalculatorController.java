@@ -19,8 +19,8 @@ public class VacationCalculatorController {
     @GetMapping("/calculate")
     public String calculate(@ModelAttribute Vacation vacation, Model model) {
         model.addAttribute("vacation", vacation);
-        vacation.setVacationPay(vacationCalculatorService.calculateVacationPay(vacation.getVacationsDays(),
-                vacation.getAverageSalary()));
+        vacation.setVacationPay(vacationCalculatorService.calculateVacationPay(vacation));
+        vacationCalculatorService.setVacationData(vacation);
         return "calculate";
     }
 
